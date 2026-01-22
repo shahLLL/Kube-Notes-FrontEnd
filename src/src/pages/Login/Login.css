@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 100px;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #d34141;
+}
+
+.logo{
+    width: 30%;
+    height: auto;
+}
+
+.input-field {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+button {
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+}
+
+button:hover {
+  text-decoration: underline;
+}
+
+.btn-login {
+  background-color: transparent; /* Vite purple */
+  color: white;
+}
+
+.btn-signup {
+  background-color: transparent;
+  color: white;
+}
