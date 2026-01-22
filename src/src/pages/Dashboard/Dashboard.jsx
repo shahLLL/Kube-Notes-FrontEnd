@@ -1,4 +1,5 @@
 import './Dashboard.css';
+import del_icon from '../../assets/Delete_Icon.png';
 
 const notes = [{
     title: "Note-1",
@@ -28,13 +29,14 @@ function Dashboard() {
     <div className="dashboard-container">
       <div className="header-banner">
         <h1>Dashboard</h1>
+        <button className="add-button">ADD NOTE</button>
       </div>
-      <div className="container">
+      <div className="note-container">
         {notes.map((note, index) => (
           <div key={index} className="note-box">
             <h3 className="note-title">{note.title}</h3>
-          </div>
-        ))}
+            <img src={del_icon} alt="Delete Icon" className="del-icon"/>
+          </div>))}
       </div>
     </div>
   )
