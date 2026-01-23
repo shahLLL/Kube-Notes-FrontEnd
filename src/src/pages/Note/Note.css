@@ -56,9 +56,10 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  gap: 20px;
 }
 
-.save-btn {
+.note-btn {
   background-color: white;
   color: #d34141;
   border: 2px solid white;
@@ -71,7 +72,7 @@
   transition: all 0.3s ease;
 }
 
-.save-btn:hover {
+.note-btn:hover {
   background-color: #d34141;
   border-color: white;
   color: white;

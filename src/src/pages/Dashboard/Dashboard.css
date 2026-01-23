@@ -8,9 +8,12 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.add-button {
+.header-button-container {
   position: absolute;
   right: 0;
+}
+
+.header-button {
   color: #d34141;
   background-color: white;
   font-size: 25px;
@@ -62,11 +65,4 @@ h1 {
   text-transform: uppercase;
   margin: 0;
   text-align: center;
-}
-
-.del-icon{
-    width: 30%;
-    height: 10;
-    border: 2px solid #0e0d0d;
-    border-radius: 12px;
 }

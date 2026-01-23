@@ -1,5 +1,5 @@
+import { useNavigate } from 'react-router-dom'
 import './Dashboard.css';
-import del_icon from '../../assets/Delete_Icon.png';
 
 const notes = [{
     title: "Note-1",
@@ -25,17 +25,37 @@ const notes = [{
 }];
 
 function Dashboard() {
+  const navigate = useNavigate()
+
+  const handleNewNote = () => {
+    console.log("Creating New Note")
+    navigate("/note")
+  }
+
+  const handleLogOut = () => {
+    console.log("Logging User Out")
+    navigate("/login")
+  }
+
+  const handleExistingNote = () => {
+      console.log("Opening Existing Note")
+      navigate("/note")
+  }
+  
+
   return (
     <div className="dashboard-container">
       <div className="header-banner">
         <h1>Dashboard</h1>
-        <button className="add-button">ADD NOTE</button>
+        <div className="header-button-container">
+          <button className="header-button" onClick={handleNewNote}>ADD NOTE</button>
+          <button className="header-button" onClick={handleLogOut}>LOG OUT</button>
+        </div>
       </div>
       <div className="note-container">
         {notes.map((note, index) => (
-          <div key={index} className="note-box">
+          <div key={index} className="note-box" onClick={handleExistingNote}>
             <h3 className="note-title">{note.title}</h3>
-            <img src={del_icon} alt="Delete Icon" className="del-icon"/>
           </div>))}
       </div>
     </div>
