@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { registerUser, autheticateUser } from '../../services/authServices';
 import logo from '../../assets/KubeNotes_Logo.png'
