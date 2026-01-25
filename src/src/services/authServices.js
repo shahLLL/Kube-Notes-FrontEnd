@@ -11,12 +11,6 @@ export const registerUser = async (username, password) => {
       username,
       password,
     });
-    if(response.data.token) 
-        localStorage.setItem('notes_jwt', token)
-    else {
-        console.log("Token Error")
-        throw new Error("Token Error")
-    }
     return response.status;
   } catch (error) {
     const errorMessage = error.response?.data?.error || 'Registration failed';
@@ -43,7 +37,14 @@ export const autheticateUser = async (username, password) => {
       username,
       password,
     });
-    
+    const token = response?.data?.token;
+
+    if(token) 
+        localStorage.setItem('notes_jwt', token)
+    else {
+        console.log("Token Error")
+        throw new Error("Token Error")
+    }
     return response.status;
   } catch (error) {
     const errorMessage = error.response?.data?.error || 'Authentication failed';
