@@ -1,31 +1,28 @@
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { getAllNotes } from '../../services/notesServices'
+import { logoutUser } from '../../services/authServices'
 import './Dashboard.css';
 
-const notes = [{
-    title: "Note-1",
-    content: "Chemistry"
-}, {
-    title: "Note-2",
-    content: "Physics"
-}, {
-    title: "Note-3",
-    content: "Mathematics"
-},
-{
-    title: "Note-4",
-    content: "History"
-},
-{
-    title: "Note-5",
-    content: "English"
-},
-{
-    title: "Note-6",
-    content: "Accounting"
-}];
 
 function Dashboard() {
   const navigate = useNavigate()
+  const [notes, setNotes] = useState([])
+
+  useEffect(() => {
+    const fetchNotes = async () => {
+      const result = await getAllNotes();
+      
+      if (result.status === 200) {
+        setNotes(result.data);
+      } else if (result.status === 401) {
+        logoutUser()
+        navigate("/login")
+      }
+    };
+
+    fetchNotes();
+  }, [navigate]);
 
   const handleNewNote = () => {
     console.log("Creating New Note")
@@ -34,14 +31,14 @@ function Dashboard() {
 
   const handleLogOut = () => {
     console.log("Logging User Out")
+    logoutUser()
     navigate("/login")
   }
 
-  const handleExistingNote = () => {
+  const handleExistingNote = (noteId) => {
       console.log("Opening Existing Note")
-      navigate("/note")
+      navigate(`/note/${noteId}`)
   }
-  
 
   return (
     <div className="dashboard-container">
@@ -53,8 +50,8 @@ function Dashboard() {
         </div>
       </div>
       <div className="note-container">
-        {notes.map((note, index) => (
-          <div key={index} className="note-box" onClick={handleExistingNote}>
+        {notes.map((note) => (
+          <div key={note._id} className="note-box" onClick={() => handleExistingNote(note._id)}>
             <h3 className="note-title">{note.title}</h3>
           </div>))}
       </div>
