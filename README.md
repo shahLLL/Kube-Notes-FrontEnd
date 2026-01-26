@@ -3,6 +3,7 @@
   <img src="images/background-photo.png" alt="Vite+React Logo" width="75%"/>
   <br><br>
 </div>
+
 This is a [React](https://react.dev/) Repository that servers as the front-end for a larger [overall project](https://github.com/shahLLL/Kube-Notes-Infra) and is powered by [Vite.](https://vite.dev/)
 
 The project is a distributed note taking service that is meant to be deployed and managed using [Kubernetes.](https://kubernetes.io/)
