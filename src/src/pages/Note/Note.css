@@ -20,6 +20,31 @@
   margin: 0;
 }
 
+.note-title {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 800;
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  padding: 0;
+  line-height: 1;
+  font-family: inherit;
+  color: #d34141;
+  display: block;
+  resize: none;
+  outline: none;
+  margin: 0 auto;
+}
+
+.note-title::placeholder {
+  color: #e28888;
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+}
+
 .note-body {
   flex: 1;
   background-color: #d34141;

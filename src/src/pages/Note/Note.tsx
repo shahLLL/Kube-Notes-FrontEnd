@@ -1,22 +1,67 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import './Note.css';
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { getNoteById, createNote, updateNote, deleteNote } from '../../services/notesServices'
+import './Note.css'
 
 function Note() {
-  const noteTitle = "Chemistry Notes";
-  const initialContent = "This is a previously written note about covalent bonds...";
-  const [noteText, setNoteText] = useState(initialContent);
+  const { noteId } = useParams();
+  const [title, setTitle] = useState("")
+  const [content, setContent] = useState("")
+
   const navigate = useNavigate()
 
-  const handleSave = () => {
-    console.log("Saving to API:", noteText)
-    alert("Note saved successfully!")
+  useEffect(() => {
+    const getData = async () => {
+      const result = await getNoteById(noteId as string)
+      if (result.status === 200) {
+        setTitle(result.data.title)
+        setContent(result.data.content)
+      }
+    }
+
+    if (noteId) {
+      getData()
+    }
+  }, [navigate])
+
+  const handleSave = async () => {
+    if (title.length <= 0) {
+      alert("Title is empty!")
+      return
+    }
+    console.log("Saving to API:", title)
+
+    if (noteId) {
+      const result = await updateNote(noteId, { title:title, content:content })
+      if (result == 200) {
+        alert("Note Successully Updated!")
+      } else {
+        alert("Could not update Note, please try again later")
+      }
+    } else {
+      const result = await createNote({ title:title, content:content })
+      if (result == 201) {
+        alert("Note Successully Created!")
+      } else {
+        alert("Could not create Note, please try again later")
+      }
+    }
+
     navigate("/dashboard")
   };
 
-  const handleDelete = () => {
-    console.log("Deleting Note:", noteTitle)
-    alert("Note deleted successfully!")
+  const handleDelete = async () => {
+    console.log("Deleting Note:", title)
+
+    if (noteId) {
+      const result = await deleteNote(noteId)
+      if (result == 200) {
+        alert("Note Successfully Deleted!")
+      } else {
+        alert("Could not delete Note, please try again later")
+      }
+    }
+    
     navigate("/dashboard")
   };
 
@@ -28,15 +73,20 @@ function Note() {
   return (
     <div className="note-page-container">
       <header className="note-header">
-        <h1>{noteTitle}</h1>
+        <textarea
+            className="note-title" 
+            value={title} 
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="TITLE"
+          />
       </header>
 
       <main className="note-body">
         <div className="editor-wrapper">
           <textarea 
             className="note-editor" 
-            value={noteText} 
-            onChange={(e) => setNoteText(e.target.value)}
+            value={content} 
+            onChange={(e) => setContent(e.target.value)}
             placeholder="Start typing your note here..."
           />
           
