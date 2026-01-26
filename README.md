@@ -24,6 +24,12 @@ npm run build
 npm run dev
 ```
 
+In order to ensure proper functionality remember to integrate with an authentication service and a CRUD based notes service by add a **.env** file to the src directory with the following:
+```
+VITE_AUTH_API_URL
+VITE_NOTES_API_URL
+```
+
 Contributions and feedback are more than welcomed. 
 
 When contributing to this project or using it in any way, please do pay attention to: [LICENSE](https://github.com/shahLLL/Kube-Notes-FrontEnd?tab=Apache-2.0-1-ov-file)
