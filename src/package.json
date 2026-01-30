@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "clean": "rm -rf ./dist ./node_modules",
     "dev": "vite --host 0.0.0.0",
-    "build": "vite build",
+    "build": "npm run clean && npm install && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
