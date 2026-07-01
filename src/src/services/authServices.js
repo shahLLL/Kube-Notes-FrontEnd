@@ -15,7 +15,7 @@ export const registerUser = async (username, password) => {
   } catch (error) {
     const errorMessage = error.response?.data?.error || 'Registration failed';
     console.log(errorMessage)
-    return response?.status || 500
+    return error?.response?.status || 500
   }
 };
 
@@ -49,6 +49,6 @@ export const autheticateUser = async (username, password) => {
   } catch (error) {
     const errorMessage = error.response?.data?.error || 'Authentication failed';
     console.log(errorMessage)
-    return response?.status || 500
+    return error?.response?.status || 500
   }
 };
