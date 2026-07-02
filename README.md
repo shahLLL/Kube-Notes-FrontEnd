@@ -35,3 +35,4 @@ Contributions and feedback are more than welcomed.
 When contributing to this project or using it in any way, please do pay attention to: [LICENSE](https://github.com/shahLLL/Kube-Notes-FrontEnd?tab=Apache-2.0-1-ov-file)
 
 ☕☕☕**CHEERS AND THANK YOU**☕☕☕
+GTAVI
