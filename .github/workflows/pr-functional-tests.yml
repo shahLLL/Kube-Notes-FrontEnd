@@ -1,0 +1,38 @@
+name: PR Functional Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  functional-tests:
+    name: Run Functional Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        working-directory: src
+        run: npm ci
+
+      - name: Run lint
+        working-directory: src
+        run: npm run lint
+
+      - name: Build
+        working-directory: src
+        run: npm run build
+
+      - name: Run functional tests
+        working-directory: src
+        run: npm test
