@@ -1,10 +1,11 @@
 name: PR Functional Tests
 
 on:
+  push:
+    branches: [ main ]
   pull_request_target:
-    branches:
-      - main
-      - master
+    types: [opened, reopened, synchronize, ready_for_review]
+    branches: [ main ]
 
 jobs:
   functional-tests:
