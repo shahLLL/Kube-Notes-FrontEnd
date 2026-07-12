@@ -4,34 +4,50 @@
   <br><br>
 </div>
 
-This is a [React](https://react.dev/) Repository that servers as the front-end for a larger [overall project](https://github.com/shahLLL/Kube-Notes-Infra) and is powered by [Vite.](https://vite.dev/)
+## 👀 Overview
+This is a [**React**](https://react.dev/) Repository that servers as the front-end for a larger [**overall project**](https://github.com/shahLLL/Kube-Notes-Infra) and is powered by [**Vite.**](https://vite.dev/)
 
-The project is a distributed note taking service that is meant to be deployed and managed using [Kubernetes.](https://kubernetes.io/)
+The project is a distributed note taking service that is meant to be deployed and managed using [**Kubernetes.**](https://kubernetes.io/)
 
-This repository can be run in two different ways, either by using Docker or Node.
+## 🛠️ Usage
+This repository can be run in two different ways, either by using Docker or Node. 
 
-If using Docker:
-```
-cd src
-docker build -t [IMAGE_NAME:IMAGE_TAG] .
-docker run -p HOST_PORT:80 [IMAGE_NAME:IMAGE_TAG]
-```
+This Frontend App communicates with two distinct Backend Services:
+- [**Auth Service:**](https://github.com/shahLLL/Kube-Notes-Auth) Responsible For Authentication
+- [**Notes Service:**](https://github.com/shahLLL/Kube-Notes-Notes) Responsible For Note CRUD Operations
+The URLs must be specified by user for full functionality.
 
-If using Node:
-```
-cd src
-npm run build
-npm run dev
-```
+If this is confusing please checkout the [**Main Repo**](https://github.com/shahLLL/Kube-Notes-Infra) of this project.
 
-In order to ensure proper functionality remember to integrate with an authentication service and a CRUD based notes service by add a **.env** file to the src directory with the following:
-```
-VITE_AUTH_API_URL
-VITE_NOTES_API_URL
-```
+This project makes use of a [**Makefile**](https://wiki.osdev.org/Makefile). The following targets are available for convinence:
 
+`make install`
+
+Installs project dependencies locally
+
+`make config`
+
+Prompts for service URLs and configures within React App.
+
+`make build`
+
+Builds React Application
+
+`make start`
+
+Starts React App/Server
+
+`make docker-build`
+
+Containerizes Application by creating Docker Image
+
+`make docker-start`
+
+Runs Containerized Version of React App, Port 3000 by default
+
+## 🍴 Forking & Contribution
 Contributions and feedback are more than welcomed. 
 
-When contributing to this project or using it in any way, please do pay attention to: [LICENSE](https://github.com/shahLLL/Kube-Notes-FrontEnd?tab=Apache-2.0-1-ov-file)
+When contributing to this project or using it in any way, please do pay attention to: [**LICENSE**](https://github.com/shahLLL/Kube-Notes-FrontEnd?tab=Apache-2.0-1-ov-file)
 
 ☕☕☕**CHEERS AND THANK YOU**☕☕☕
